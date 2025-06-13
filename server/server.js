@@ -19,7 +19,9 @@ app.use(cors({
 
 app.use("/user/api" , userRouter);
 
-
+app.get("/", (req, res) => {
+    res.send("api is working");
+})
 
 app.listen(3000, () => {
     console.log("Server is running on PORT 3000")
