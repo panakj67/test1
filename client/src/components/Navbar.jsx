@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <div onClick={() => navigate('/')} className="text-2xl font-bold">MyApp</div>
+        <div onClick={() => navigate('/')} className="text-2xl cursor-pointer font-bold">MyApp</div>
 
         {user ? (
           <div
