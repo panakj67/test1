@@ -10,12 +10,16 @@ import Navbar from './components/Navbar'
 import HomePage from './pages/Home'
 import WelcomePage from './pages/Welcome'
 import Profile from './pages/Profile'
+import { useEffect } from 'react'
+import { setUser } from './Store/reducers/userSlice'
 
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL;
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
+
 
 const App = () => {
   // const points = useSelector((state) => state.users.points)
+
   const dispatch = useDispatch()
     const login = useSelector((state) => state.users.login)
 
@@ -32,6 +36,23 @@ const App = () => {
   //   }
   // }
   const user = useSelector((state) => state.users.user)
+
+  useEffect(() => {
+    const fetchUser = async () => {      
+      try {
+        const { data } = await axios.get('/user/api/isAuth');
+        console.log(data);
+        
+        if (data.success) {
+          dispatch(setUser(data.user));
+        } 
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      }
+    };
+
+    fetchUser();
+  }, [])
 
   return (
     

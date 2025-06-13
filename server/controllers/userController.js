@@ -85,10 +85,11 @@ export const register = async (req, res) => {
 
 export const isAuthorised = async (req, res) => {
   try {
+    
     if (!req.user) {
       return res.json({ success: false, message: "You are not authorised" });
     }
-    const user = await userModel.find({id : req.user._id}).select("-password")
+    const user = await userModel.findOne({id : req.user._id}).select("-password")
     return res.json({ success: true, user });
   } catch (error) {
     return res.json({ success: false, message: error.message });
