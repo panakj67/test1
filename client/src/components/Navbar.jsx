@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setLogin, setUser } from '../Store/reducers/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.user);
 
@@ -25,7 +26,7 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">MyApp</div>
+        <div onClick={() => navigate('/')} className="text-2xl font-bold">MyApp</div>
 
         {user ? (
           <div
@@ -44,7 +45,7 @@ const Navbar = () => {
             {isHovered && (
               <div className="absolute top-10 right-0 w-48 bg-white text-gray-800 rounded-md shadow-lg z-20">
                 <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
-                <Link to="/dashboard" className="block px-4 py-2 hover:bg-gray-100">Dashboard</Link>
+                <Link to="/welcome" className="block px-4 py-2 hover:bg-gray-100">Dashboard</Link>
                 <button onClick={logout} className="w-full text-left px-4 py-2 hover:bg-gray-100">Logout</button>
               </div>
             )}

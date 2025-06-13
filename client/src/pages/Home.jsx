@@ -1,7 +1,9 @@
 // HomePage.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+    const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100">
       {/* Navbar */}
@@ -15,7 +17,7 @@ const HomePage = () => {
           A modern, minimal and beautifully designed platform to explore creativity, productivity and innovation.
         </p>
         <div className="flex justify-center space-x-4">
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full text-lg shadow-md transition">
+          <button onClick={() => navigate("/welcome")} className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full text-lg shadow-md transition">
             Get Started
           </button>
           <button className="bg-white hover:bg-gray-100 text-indigo-600 border border-indigo-600 px-6 py-3 rounded-full text-lg shadow-md transition">

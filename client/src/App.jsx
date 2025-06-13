@@ -40,8 +40,8 @@ const App = () => {
       <Navbar />
       {/* <HomePage/> */}
       <Routes>
-         <Route path="/" element={<HomePage />} />
-         <Route path="/welcome" element={<WelcomePage />} />
+         <Route path="/" element={user ? <WelcomePage/> : <HomePage />} />
+         <Route path="/welcome" element={user ? <WelcomePage /> : <Login/>} />
          <Route path="/profile" element={user ? <Profile /> : <Login/>} />
       </Routes>
       {login && <Login/>}

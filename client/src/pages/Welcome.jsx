@@ -1,8 +1,10 @@
 // WelcomePage.jsx
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const WelcomePage = () => {
+    const navigate = useNavigate();
     const user = useSelector((state) => state.users.user);
     console.log(user);
   return (
@@ -16,8 +18,8 @@ const WelcomePage = () => {
         <p className="text-lg text-gray-700 max-w-md mx-auto">
           We're glad to have you here. Explore your dashboard, customize your profile, and enjoy the experience.
         </p>
-        <button className="mt-8 px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 rounded-full text-lg shadow-md transition">
-          Go to Dashboard
+        <button onClick={() => navigate("/profile")} className="mt-8 px-6 py-3 text-white bg-purple-600 hover:bg-purple-700 rounded-full text-lg shadow-md transition">
+          Go to Profile
         </button>
       </div>
 
