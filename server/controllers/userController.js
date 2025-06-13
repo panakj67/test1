@@ -32,7 +32,7 @@ export const login = async (req, res) => {
     res.cookie('token', token, {
         httpOnly : true,
         secure : true,
-        sameSite : 'none',
+        sameSite : 'None',
         maxAge : 3 * 24 * 60 * 60 * 1000
     })
 
@@ -88,7 +88,7 @@ export const isAuthorised = async (req, res) => {
     if (!req.user) {
       return res.json({ success: false, message: "You are not authorised" });
     }
-    const user = userModel.find({id : req.user._id}).select("-password")
+    const user = await userModel.find({id : req.user._id}).select("-password")
     return res.json({ success: true, user });
   } catch (error) {
     return res.json({ success: false, message: error.message });
